@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+<script src="firebase-config.js"></script>
+<script src="request.js"></script>
+<script src="payment.js"></script>
+
+</head>
+
+<body>
+
+<h2>Request Domain</h2>
+
+<input id="keyword" placeholder="Enter Business Keyword">
+<button onclick="generateDomains()">Generate</button>
+
+<div id="suggestions"></div>
+
+</body>
+</html>
