@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header><h2>PrimeDomains Admin</h2></header>
-
-<section>
-<h2>Client Requests</h2>
-<div id="requestList"></div>
-</section>
-
-<footer>
-<p>© 2026 PrimeDomains</p>
-</footer>
-
-<script src="admin.js"></script>
-</body>
-</html>
+let requests=JSON.parse(localStorage.getItem("requests"))||[];
+let container=document.getElementById("requestList");
+requests.forEach(r=>{
+  let card=document.createElement("div");
+  card.className="domain-card";
+  card.innerHTML=`<h3>${r.domain}</h3><p>${r.business}</p><p>${r.email}</p><p>${r.details}</p>`;
+  container.appendChild(card);
+});
