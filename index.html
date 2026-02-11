@@ -3,39 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrimeDomains – Startup Branding</title>
-<link rel="stylesheet" href="style.css">
+<title>PrimeDomains Kenya</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="manifest" href="manifest.json">
+<script src="service-worker.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
 </head>
 <body>
 
 <header>
-<h2>PrimeDomains</h2>
+<h1>PrimeDomains Kenya</h1>
 <nav>
 <a href="index.html">Home</a>
-<a href="packages.html">Packages</a>
-<a href="request.html">Request Domain</a>
-<a href="admin.html">Admin</a>
+<a href="marketplace.html">Marketplace</a>
+<a href="sell-domain.html">Sell Domain</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="lead-generator.html">Free Branding</a>
+<a href="ai-branding.html">AI Branding</a>
 </nav>
 </header>
 
-<section class="hero">
-<h1>Build Your Startup Brand</h1>
-<p>AI-generated brand names + premium domains ready for instant purchase</p>
-<input type="text" id="keyword" placeholder="Enter a keyword">
-<button onclick="generateAndSendDomains()">Generate Domains</button>
-</section>
-
-<section id="carousel" class="carousel">
-<h2>Trending & Premium Domains</h2>
-<div class="carousel-container" id="carouselContainer"></div>
-<button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
-<button class="next" onclick="moveCarousel(1)">&#10095;</button>
+<section>
+<h2>Find Your Perfect Domain</h2>
+<p>Secure premium domain names and brand your business with PrimeDomains Kenya.</p>
+<a href="login.html" class="btn">Get Started</a>
 </section>
 
 <footer>
-<p>© 2026 PrimeDomains Global Brokerage</p>
+<p>&copy; 2026 PrimeDomains Kenya | <a href="legal/terms.html">Terms</a> | <a href="legal/privacy.html">Privacy</a></p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
