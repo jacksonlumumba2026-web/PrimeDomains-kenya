@@ -3,108 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrimeDomains – Startup Naming & Domain Brokerage</title>
+<title>PrimeDomains – Startup Naming & Domains</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
 <header>
 <h2>PrimeDomains</h2>
 <nav>
 <a href="index.html">Home</a>
 <a href="packages.html">Packages</a>
-<a href="#marketplace">Domains</a>
 <a href="request.html">Request Domain</a>
 <a href="admin.html">Admin</a>
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-<h1>Find The Perfect Startup Name & Domain</h1>
-<p>We help startups worldwide create powerful brand names and secure premium domains.</p>
-<a href="request.html" class="btn">Start Naming Project</a>
+<h1>Build Your Startup Brand with PrimeDomains</h1>
+<p>We generate creative brand names, find premium domains, and enable instant purchase worldwide.</p>
+<a href="request.html" class="btn">Start Naming</a>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
 <h2>Our Services</h2>
 <div class="service-container">
-<div class="service-card">
-<h3>Startup Naming</h3>
-<p>Creative brand name ideas tailored for your business vision.</p>
-</div>
-<div class="service-card">
-<h3>Domain Brokerage</h3>
-<p>We locate, negotiate and secure premium domains globally.</p>
-</div>
-<div class="service-card">
-<h3>Brand Strategy</h3>
-<p>Helping startups choose memorable and scalable brand identities.</p>
-</div>
+<div class="service-card"><h3>Startup Naming</h3><p>Creative brand names tailored for your vision.</p></div>
+<div class="service-card"><h3>Domain Brokerage</h3><p>We locate and negotiate premium domains globally.</p></div>
+<div class="service-card"><h3>Brand Strategy</h3><p>Memorable and scalable brand identities.</p></div>
 </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process">
-<h2>How Our Brokerage Works</h2>
-<div class="steps">
-<div>
-<h3>1. Submit Request</h3>
-<p>Tell us your startup idea and preferred domain.</p>
-</div>
-<div>
-<h3>2. Research & Negotiation</h3>
-<p>We find domain owners and negotiate best price.</p>
-</div>
-<div>
-<h3>3. Secure Transfer</h3>
-<p>We safely transfer domain ownership to you.</p>
-</div>
-</div>
-</section>
-
-<!-- MARKETPLACE -->
 <section id="marketplace">
-<h2>Featured Brandable Domains</h2>
+<h2>Featured Domains</h2>
 <div class="domain-container">
 <div class="domain-card">
 <h3>LaunchHive.com</h3>
 <p>Startup Branding Domain</p>
 <span>$950</span>
-<a href="request.html" class="btn">Make Inquiry</a>
+<button onclick="buyDomain('LaunchHive.com',950)" class="btn">Buy Now</button>
 </div>
 <div class="domain-card">
 <h3>GrowthNest.com</h3>
 <p>Business Growth Domain</p>
 <span>$1,200</span>
-<a href="request.html" class="btn">Make Inquiry</a>
+<button onclick="buyDomain('GrowthNest.com',1200)" class="btn">Buy Now</button>
 </div>
 <div class="domain-card">
 <h3>ScaleForge.com</h3>
 <p>Tech Startup Domain</p>
 <span>$1,500</span>
-<a href="request.html" class="btn">Make Inquiry</a>
+<button onclick="buyDomain('ScaleForge.com',1500)" class="btn">Buy Now</button>
 </div>
 </div>
 </section>
 
-<!-- TRUST -->
-<section class="trust">
-<h2>Why Startups Choose PrimeDomains</h2>
-<ul>
-<li>✔ Global domain sourcing network</li>
-<li>✔ Secure transfer process</li>
-<li>✔ Startup-focused branding expertise</li>
-<li>✔ Fast negotiation turnaround</li>
-</ul>
-</section>
-
-<!-- CTA -->
-<section class="hero">
-<h2>Ready To Build Your Startup Brand?</h2>
-<a href="request.html" class="btn">Request Your Domain</a>
-</section>
+<script>
+function buyDomain(domainName, price){
+  let paypalLink = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=YOUR_PAYPAL_EMAIL&item_name=${domainName}&amount=${price}&currency_code=USD`;
+  window.open(paypalLink,"_blank");
+  setTimeout(()=>{
+    let email = prompt("Enter your email for confirmation:");
+    let message = `Domain Purchased:%0ADomain: ${domainName}%0APrice: $${price}`;
+    window.open(`https://wa.me/254XXXXXXXXX?text=${message}`);
+    if(email) window.location.href = `mailto:${email}?subject=Domain Purchase Confirmation&body=Thank you for purchasing ${domainName} for $${price}. Our team will contact you shortly.`;
+  },5000);
+}
+</script>
 
 <footer>
 <p>© 2026 PrimeDomains Global Brokerage</p>
