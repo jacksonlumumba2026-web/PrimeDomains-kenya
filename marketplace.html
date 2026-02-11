@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketplace - PrimeDomains</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-<script src="js/firebase-config.js"></script>
-<script src="js/marketplace.js"></script>
-<script src="js/payments.js"></script>
-</head>
-<body>
-<h2>Marketplace</h2>
-<div id="market"></div>
-</body>
-</html>
+import { db } from './firebase-config.js';
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const container = document.getElementById('marketplace-container');
+
+async function loadDomains() {
+    const querySnapshot = await getDocs(collection(db, "domains"));
+    container.innerHTML = ''; // Clear loader
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        container.innerHTML += `
+            <div class="domain-card">
+                <h3>${data.name}</h3>
+                <p class="category">${data.category}</p>
+                <div class="price">$${data.price}</div>
+                <button onclick="viewDomain('${doc.id}')" class="btn-primary">View Details</button>
+            </div>
+        `;
+    });
+}
+
+window.onload = loadDomains;
