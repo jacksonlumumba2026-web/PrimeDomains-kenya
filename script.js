@@ -1,29 +1,23 @@
-// DOMAINS ARRAY
+// DOMAINS LIST
 const domains = [
     {name: "techhubkenya.com", price: 120, status: "Available", category:"Tech", badge:"Featured"},
     {name: "safemarketafrica.com", price: 90, status: "Sold", category:"E-commerce", badge:"New"},
-    {name: "quickfixservices.com", price: 60, status: "Available", category:"Business", badge:"Featured"},
-    {name: "startupgenius.com", price: 150, status: "Available", category:"Brandable", badge:"New"},
-    {name: "africawebtech.com", price: 100, status: "Sold", category:"Tech", badge:"Featured"}
-    // Add more domains here
+    {name: "quickfixservices.com", price: 60, status: "Available", category:"Business", badge:"Featured"}
 ];
 
-// SLIDER
-const sliderTrack = document.getElementById("sliderTrack");
-const featuredDomains = domains.filter(d => d.badge === "Featured");
-featuredDomains.forEach(d=>{
-    const statusClass = d.status==="Available"?"status-available":"status-sold";
-    const soldOverlay = d.status==="Sold"?`<div class="sold-overlay">SOLD</div>`:"";
-    let badgeHTML = d.badge==="New"?`<div class="badge badge-new">NEW</div>`:`<div class="badge badge-featured">FEATURED</div>`;
-    sliderTrack.innerHTML += `<div class="slide">${soldOverlay}${badgeHTML}<h3>${d.name}</h3><p>Price: $${d.price}</p><p class="status ${statusClass}">${d.status}</p><button onclick="buyDomain('${d.name}','${d.status}')">Buy</button></div>`;
-});
-const slides = document.querySelectorAll(".slide");
-let slideIndex=0;
-function showSlideFade(index){ slides.forEach((s,i)=>{ s.classList.remove("active"); if(i===index) s.classList.add("active"); }); }
-function nextSlide(){ slideIndex=(slideIndex+1)%slides.length; showSlideFade(slideIndex); }
-function prevSlide(){ slideIndex=(slideIndex-1+slides.length)%slides.length; showSlideFade(slideIndex); }
-setInterval(nextSlide,5000);
-showSlideFade(slideIndex);
+// Update hero & nav
+document.getElementById("heroHeadline").textContent = config.heroHeadline;
+document.getElementById("heroSubheadline").textContent = config.heroSubheadline;
+document.getElementById("navTitle").textContent = config.siteTitle;
+document.getElementById("siteTitle").textContent = config.siteTitle;
+
+// Update colors
+document.documentElement.style.setProperty('--primary-color', config.colors.primary);
+document.documentElement.style.setProperty('--secondary-color', config.colors.secondary);
+document.documentElement.style.setProperty('--accent-color', config.colors.accent);
+
+// WhatsApp link
+document.querySelector(".whatsapp").href = `https://wa.me/${config.whatsappNumber}`;
 
 // DOMAIN GRID
 const domainGrid = document.getElementById("domainGrid");
@@ -50,8 +44,8 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 function buyDomain(name,status){
     if(status==="Sold"){ alert("Sorry, this domain is sold."); return; }
     const waMessage=encodeURIComponent(`Hi, I want to buy the domain: ${name}`);
-    window.open(`https://wa.me/254700000000?text=${waMessage}`,'_blank');
+    window.open(`https://wa.me/${config.whatsappNumber}?text=${waMessage}`,'_blank');
 }
 
-// AUTO UPDATE FOOTER YEAR
+// FOOTER YEAR
 document.getElementById("year").textContent = new Date().getFullYear();
