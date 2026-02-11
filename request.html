@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Request Domain</title>
+<title>Request & Buy Domains – PrimeDomains</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <header>
 <h2>PrimeDomains</h2>
 <nav>
@@ -18,8 +19,20 @@
 
 <section class="hero">
 <h1>Request Your Domain</h1>
-<p>Submit your startup idea and desired domain, and we’ll handle the rest.</p>
+<input type="text" id="keyword" placeholder="Enter a keyword">
+<button onclick="generateNames()">Generate Domain Suggestions</button>
+<p id="suggestions"></p>
+</section>
 
+<section id="carousel" class="carousel">
+<h2>Premium Suggestions</h2>
+<div class="carousel-container" id="carouselContainer"></div>
+<button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+<button class="next" onclick="moveCarousel(1)">&#10095;</button>
+</section>
+
+<section>
+<h2>Domain Request Form</h2>
 <form id="requestForm">
 <input id="domain" placeholder="Desired Domain" required>
 <input id="business" placeholder="Business Type" required>
@@ -28,6 +41,10 @@
 <button type="submit">Submit Request</button>
 </form>
 </section>
+
+<footer>
+<p>© 2026 PrimeDomains</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
