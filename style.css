@@ -1,0 +1,43 @@
+:root {
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --dark: #121212;
+    --card-bg: #1e1e1e;
+    --text: #ffffff;
+    --accent: #00d4ff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark);
+    color: var(--text);
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.domain-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 10px;
+}
+
