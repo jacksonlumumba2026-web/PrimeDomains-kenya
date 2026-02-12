@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrimeDomains - Register</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>PrimeDomains</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="auctions.html">Auctions</a></li>
+        <li><a href="branding.html">AI Branding</a></li>
+        <li><a href="seller.html">Sell Domain</a></li>
+        <li><a href="lead.html">Lead Generation</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Register</h2>
+    <form id="register-form">
+      <label for="register-email">Email:</label>
+      <input type="email" id="register-email" required>
+      <label for="register-password">Password:</label>
+      <input type="password" id="register-password" required>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a>.</p>
+    <p id="register-error" class="error-message"></p>
+  </main>
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
