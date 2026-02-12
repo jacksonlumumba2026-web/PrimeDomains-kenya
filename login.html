@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - PrimeDomains</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-<script src="js/firebase-config.js"></script>
-<script src="js/auth.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrimeDomains - Login</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-<section>
-<h2>Login</h2>
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
-<p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-</section>
+  <header>
+    <h1>PrimeDomains</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="auctions.html">Auctions</a></li>
+        <li><a href="branding.html">AI Branding</a></li>
+        <li><a href="seller.html">Sell Domain</a></li>
+        <li><a href="lead.html">Lead Generation</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Login</h2>
+    <form id="login-form">
+      <label for="login-email">Email:</label>
+      <input type="email" id="login-email" required>
+      <label for="login-password">Password:</label>
+      <input type="password" id="login-password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+    <p id="login-error" class="error-message"></p>
+  </main>
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/auth.js"></script>
 </body>
 </html>
