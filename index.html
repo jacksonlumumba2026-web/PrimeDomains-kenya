@@ -1,40 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrimeDomains Kenya</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="manifest" href="manifest.json">
-<script src="service-worker.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-<script src="js/firebase-config.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrimeDomains - Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!-- Navigation -->
+  <header>
+    <h1>PrimeDomains</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="auctions.html">Auctions</a></li>
+        <li><a href="branding.html">AI Branding</a></li>
+        <li><a href="seller.html">Sell Domain</a></li>
+        <li><a href="lead.html">Lead Generation</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div id="user-menu">
+      <!-- Login/Register or Dashboard/Logout links are populated by JavaScript based on authentication state -->
+    </div>
+  </header>
 
-<header>
-<h1>PrimeDomains Kenya</h1>
-<nav>
-<a href="index.html">Home</a>
-<a href="marketplace.html">Marketplace</a>
-<a href="sell-domain.html">Sell Domain</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="lead-generator.html">Free Branding</a>
-<a href="ai-branding.html">AI Branding</a>
-</nav>
-</header>
+  <!-- Main content -->
+  <main>
+    <section id="hero">
+      <h2>Find Your Perfect Domain Name</h2>
+      <p>Welcome to PrimeDomains, your one-stop marketplace for buying and selling premium domain names. Discover the ideal domain for your project or sell your unused domains for cash.</p>
+      <button id="cta-buy">Explore Marketplace</button>
+    </section>
+    <section id="features">
+      <h3>Features</h3>
+      <ul>
+        <li>Wide range of premium domain listings</li>
+        <li>AI-powered branding suggestions</li>
+        <li>Easy domain auctions and secure transactions</li>
+        <li>Lead generation and marketing support</li>
+      </ul>
+    </section>
+  </main>
 
-<section>
-<h2>Find Your Perfect Domain</h2>
-<p>Secure premium domain names and brand your business with PrimeDomains Kenya.</p>
-<a href="login.html" class="btn">Get Started</a>
-</section>
-
-<footer>
-<p>&copy; 2026 PrimeDomains Kenya | <a href="legal/terms.html">Terms</a> | <a href="legal/privacy.html">Privacy</a></p>
-</footer>
-
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <!-- Service Worker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+  <!-- Main script to update user menu based on auth state -->
+  <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+      var userMenu = document.getElementById('user-menu');
+      if (user) {
+        userMenu.innerHTML = '<span>Welcome, ' + user.email + '</span> <a href="dashboard.html">Dashboard</a> <a href="#" id="logout">Logout</a>';
+        document.getElementById('logout').onclick = function() {
+          firebase.auth().signOut().then(() => {
+            window.location = 'index.html';
+          });
+        };
+      } else {
+        userMenu.innerHTML = '<a href="login.html">Login</a> <a href="register.html">Register</a>';
+      }
+    });
+    document.getElementById('cta-buy').onclick = function() {
+      window.location = 'marketplace.html';
+    };
+  </script>
 </body>
 </html>
