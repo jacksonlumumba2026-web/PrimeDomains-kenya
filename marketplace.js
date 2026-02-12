@@ -1,23 +1,24 @@
-import { db } from './firebase-config.js';
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const container = document.getElementById('marketplace-container');
-
-async function loadDomains() {
-    const querySnapshot = await getDocs(collection(db, "domains"));
-    container.innerHTML = ''; // Clear loader
-
-    querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        container.innerHTML += `
-            <div class="domain-card">
-                <h3>${data.name}</h3>
-                <p class="category">${data.category}</p>
-                <div class="price">$${data.price}</div>
-                <button onclick="viewDomain('${doc.id}')" class="btn-primary">View Details</button>
-            </div>
-        `;
+document.addEventListener('DOMContentLoaded', function() {
+  const listingsDiv = document.getElementById('listings');
+  // Fetch approved domain listings from Firestore
+  db.collection("domains").where("status", "==", "approved").get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        var data = doc.data();
+        var id = doc.id;
+        // Create a card for each listing
+        var card = document.createElement('div');
+        card.className = 'listing';
+        card.innerHTML = '<h3>' + data.domainName + '</h3>' +
+                         '<p>' + data.description + '</p>' +
+                         '<p>Price: $' + data.price + '</p>' +
+                         '<button onclick="buyDomain(\'' + id + '\')">Buy Now</button>';
+        listingsDiv.appendChild(card);
+      });
     });
-}
-
-window.onload = loadDomains;
+  // Placeholder buy function
+  window.buyDomain = function(id) {
+    alert('Initiate purchase process for listing: ' + id);
+    // Here you would integrate PayPal or M-Pesa APIs
+  };
+});
