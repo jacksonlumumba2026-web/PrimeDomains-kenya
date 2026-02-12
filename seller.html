@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrimeDomains - Sell Domain</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>Sell Your Domain</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="auctions.html">Auctions</a></li>
+        <li><a href="branding.html">AI Branding</a></li>
+        <li><a href="seller.html">Sell Domain</a></li>
+        <li><a href="lead.html">Lead Generation</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Submit Domain Listing</h2>
+    <form id="seller-form">
+      <label for="domain-name">Domain Name:</label>
+      <input type="text" id="domain-name" required>
+      <label for="domain-price">Price (USD):</label>
+      <input type="number" id="domain-price" required>
+      <label for="domain-desc">Description:</label>
+      <textarea id="domain-desc"></textarea>
+      <button type="submit">Submit Listing</button>
+    </form>
+    <p id="seller-message"></p>
+  </main>
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/seller.js"></script>
+</body>
+</html>
