@@ -1,26 +1,28 @@
-import { db, auth } from './firebase-config.js';
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const sellForm = document.getElementById('sell-domain-form');
-
-sellForm.addEventListener('submit', async (e) => {
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('seller-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const domainData = {
-        name: sellForm['domain-name'].value,
-        price: parseFloat(sellForm['price'].value),
-        category: sellForm['category'].value,
-        sellerId: auth.currentUser.uid,
-        status: 'pending',
-        createdAt: new Date()
-    };
-
-    try {
-        await addDoc(collection(db, "domains"), domainData);
-        alert("Domain listed successfully!");
-        window.location.href = 'dashboard.html';
-    } catch (error) {
-        console.error("Error adding document: ", error);
+    var domain = document.getElementById('domain-name').value;
+    var price = parseFloat(document.getElementById('domain-price').value);
+    var desc = document.getElementById('domain-desc').value;
+    var user = firebase.auth().currentUser;
+    if (!user) {
+      alert('You must be logged in to submit a listing.');
+      window.location = 'login.html';
+      return;
     }
+    // Add new listing to Firestore with status 'pending'
+    db.collection("domains").add({
+      domainName: domain,
+      price: price,
+      description: desc,
+      seller: user.email,
+      status: 'pending',
+      created: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      document.getElementById('seller-message').innerText = 'Listing submitted for approval.';
+      document.getElementById('seller-form').reset();
+    }).catch((error) => {
+      document.getElementById('seller-message').innerText = 'Error: ' + error.message;
+    });
+  });
 });
-
