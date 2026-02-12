@@ -1,12 +1,23 @@
 {
-  "name": "PrimeDomains Kenya",
   "short_name": "PrimeDomains",
-  "start_url": "/index.html",
+  "name": "PrimeDomains Domain Marketplace",
+  "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#007bff",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
   "icons": [
-    { "src": "icon.png", "sizes": "192x192", "type": "image/png" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
   ]
 }
 
