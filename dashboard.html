@@ -1,30 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - PrimeDomains</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-<script src="js/firebase-config.js"></script>
-<script src="js/dashboard.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrimeDomains - Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-<header>
-<h1>Dashboard</h1>
-<button onclick="logout()">Logout</button>
-</header>
-
-<section>
-<h2>My Domains</h2>
-<div id="my-domains"></div>
-</section>
-
-<section>
-<h2>My Purchases</h2>
-<div id="my-purchases"></div>
-</section>
+  <header>
+    <h1>PrimeDomains Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="auctions.html">Auctions</a></li>
+        <li><a href="branding.html">AI Branding</a></li>
+        <li><a href="seller.html">Sell Domain</a></li>
+        <li><a href="lead.html">Lead Generation</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <button id="logout-btn">Logout</button>
+  </header>
+  <main>
+    <h2>Your Dashboard</h2>
+    <p>Welcome, <span id="user-email"></span>!</p>
+    <section id="my-listings">
+      <h3>My Domain Listings</h3>
+      <div id="listings"></div>
+    </section>
+  </main>
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script>
+    // Ensure user is logged in
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        document.getElementById('user-email').innerText = user.email;
+        // Load user's listings
+        db.collection("domains").where("seller", "==", user.email).get()
+          .then((snapshot) => {
+            snapshot.forEach((doc) => {
+              var data = doc.data();
+              var div = document.createElement('div');
+              div.innerHTML = '<h4>' + data.domainName + '</h4>' +
+                              '<p>Price: $' + data.price + '</p>' +
+                              '<p>Status: ' + data.status + '</p>';
+              document.getElementById('listings').appendChild(div);
+            });
+          });
+      } else {
+        window.location = 'login.html';
+      }
+    });
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      firebase.auth().signOut().then(() => {
+        window.location = 'index.html';
+      });
+    });
+  </script>
 </body>
 </html>
